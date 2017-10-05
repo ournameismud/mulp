@@ -1,0 +1,61 @@
+/* eslint-disable no-unused-consts */
+const gulp = require('gulp')
+const path = require('path')
+const watch = require('gulp-watch')
+const { getWatch } = require('../libs/utils')
+const tasks = require('./')
+const util = require('gulp-util')
+
+const serverTask = util.env.config === 'cms' ? 'server:cms' : 'server:fractal'
+
+gulp.task('watch', [serverTask], watchTasks)
+
+function watchTasks() {
+	const { watchList } = getWatch()
+
+	if (util.env.config === 'cms') {
+		watchList.push('twig')
+	}
+
+	watchList.forEach(taskName => {
+		const taskConfig = TASK_CONFIG[taskName]
+		const taskPath = PATH_CONFIG[taskName]
+
+		let watchConfig = {}
+		if (
+			TASK_CONFIG.watch !== undefined &&
+			TASK_CONFIG.watch.gulpWatch !== undefined
+		) {
+			watchConfig = TASK_CONFIG.watch.gulpWatch
+		}
+
+		if (taskConfig) {
+			const srcPath = path.resolve(
+				process.env.PWD,
+				PATH_CONFIG.src,
+				taskPath.src
+			)
+			const globPattern =
+				'**/*' +
+				(taskConfig.extensions
+					? '.{' + taskConfig.extensions.join(',') + '}'
+					: '')
+
+			const files =
+				taskName === 'scss'
+					? [
+							path.resolve(process.env.PWD, PATH_CONFIG.src, taskPath.src),
+							path.resolve(
+								process.env.PWD,
+								PATH_CONFIG.src,
+								taskPath.components
+							)
+						]
+					: path.join(srcPath, globPattern)
+
+			watch(files, watchConfig, function() {
+				tasks[`${taskName}`]()
+			})
+		}
+	})
+}
