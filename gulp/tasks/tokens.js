@@ -25,7 +25,7 @@ function tokens() {
 		.map(token => {
 			const name = token.split('.').shift()
 			return {
-				src: `${paths.src}/${token}`,
+				src: path.resolve(process.env.PWD, PATH_CONFIG.src, paths.src, token),
 				json: token,
 				prefix: `$${name}: `,
 				output: `_${name}.scss`
