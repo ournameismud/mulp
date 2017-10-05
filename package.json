@@ -19,7 +19,6 @@
 		"url": "git+https://github.com/ournameismud/mulp.git"
 	},
 	"homepage": "https://github.com/ournameismud/mulp#readme",
-	"private": true,
 	"scripts": {
 		"start": "gulp",
 		"cms": "gulp --config cms",
