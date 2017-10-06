@@ -11,8 +11,10 @@ let PATHS = PATH_CONFIG
 
 if (util.env.config) {
 	try {
-		const PATH_OVERWRITES = require(`./gulp/path.config.${util.env
-			.config}.json`)
+		const PATH_OVERWRITES = require(path.resolve(
+			process.env.PWD,
+			`config/path.config.${util.env.config}.json`
+		))
 		PATHS = { ...PATH_CONFIG, ...PATH_OVERWRITES }
 	} catch (e) {
 		throw new Error(e)
