@@ -1,8 +1,9 @@
+const { getPathConfig, getTaskConfig } = require('./gulp/libs/utils')
 const requireDir = require('require-dir')
 const util = require('gulp-util')
 const path = require('path')
-const PATH_CONFIG = require('./gulp/path.config.json')
-const TASK_CONFIG = require('./gulp/task.config')
+const PATH_CONFIG = getPathConfig()
+const TASK_CONFIG = getTaskConfig()
 
 // Fallback for windows backs out of node_modules folder to root of project
 process.env.PWD = process.env.PWD || __dirname
@@ -43,7 +44,7 @@ log(
 	
 	ENV: ${global.env}, CONFIG: ${util.env.config
 		? util.env.config
-		: 'Development'}`
+		: 'development'}`
 )
 
 requireDir('./gulp/tasks', {

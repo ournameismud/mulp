@@ -2,6 +2,7 @@
 const path = require('path')
 const notify = require('gulp-notify')
 const gutil = require('gulp-util')
+const fs = require('fs')
 
 module.exports = {
 	handleErrors,
@@ -10,7 +11,9 @@ module.exports = {
 	prettyTime,
 	logger,
 	getTasks,
-	getWatch
+	getWatch,
+	getPathConfig,
+	getTaskConfig
 }
 
 function handleErrors(errorObject, callback) {
@@ -102,4 +105,32 @@ function getWatch() {
 	return {
 		watchList: Object.keys(TASK_CONFIG).filter(key => TASK_CONFIG[key].watch)
 	}
+}
+
+/*
+	thanks https://github.com/vigetlabs/blendid/blob/master/gulpfile.js/lib/get-path-config.js
+*/
+function getPathConfig() {
+	const defaultConfigPath = path.resolve(
+		process.env.PWD,
+		'config/path.config.json'
+	)
+
+	if (fs.existsSync(defaultConfigPath)) {
+		return require(defaultConfigPath)
+	}
+
+	return require('../path.config.json')
+}
+function getTaskConfig() {
+	const defaultConfigPath = path.resolve(
+		process.env.PWD,
+		'config/task.config.js'
+	)
+
+	if (fs.existsSync(defaultConfigPath)) {
+		return require(defaultConfigPath)
+	}
+
+	return require('../task.config')
 }
