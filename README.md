@@ -13,3 +13,21 @@
 ###### Installation
 
 `yarn add mulp`
+
+###### Gettings Start
+
+Create project config files and folder structure
+
+`yarn run mulp -- init`
+
+Start development server
+
+`yarn run mulp`
+
+Use a custom path config file: `path.config.cms.json`
+
+`yarn run mulp -- -- --config cms`
+
+Create a production build
+
+`yarn run mulp -- build -- --env production`

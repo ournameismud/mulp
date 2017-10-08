@@ -1,7 +1,7 @@
 {
 	"name": "mulp",
 	"description": "Gulp tasks and Fractal",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"main": "gulpfile.babel.js",
 	"author": "Dave Stockley",
 	"license": "MIT",
@@ -20,23 +20,17 @@
 	},
 	"homepage": "https://github.com/ournameismud/mulp#readme",
 	"scripts": {
-		"start": "gulp",
-		"cms": "gulp --config cms",
-		"dev": "gulp watch",
-		"build": "gulp build --env production --config cms",
-		"build:cms": "npm run build",
-		"build:fractal": "gulp build --env production --config fractal",
-		"prebuild:static": "npm run build:fractal",
-		"build:static": "gulp build:static --config static",
-		"update:craft": "gulp update:craft --config cms --env production",
-		"preinit:craft": "npm run build:fractal",
-		"init:craft": "npm run update:craft",
-		"test": "jest",
-		"preserver": "npm run build:fractal",
-		"server": "gulp server --config fractal",
-		"prereference": "npm run buildfractal",
-		"reference": "gulp backstop_reference --config fractal --reference",
-		"diff": "gulp backstop_reference --config fractal --test"
+		"start": "mulp",
+		"cms": "yarn run mulp -- -- --config cms",
+		"build": "yarn run mulp -- build -- --env production --config cms",
+		"build:cms": "yarn run cms",
+		"build:fractal":
+			"yarn run mulp -- build -- --env production --config fractal",
+		"prebuild:static": "yarn run build:fractal",
+		"build:static": "mulp -- build:static -- --config static",
+		"update:craft": "mulp -- update:craft -- --config cms --env production",
+		"preinit:craft": "yarn run build:fractal",
+		"init:craft": "yarn run update:craft"
 	},
 	"dependencies": {
 		"@frctl/fractal": "1.1.5",

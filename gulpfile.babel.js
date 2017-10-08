@@ -1,6 +1,7 @@
 const requireDir = require('require-dir')
 const util = require('gulp-util')
-const PATH_CONFIG = require('./gulp/path.config.dev.json')
+const path = require('path')
+const PATH_CONFIG = require('./gulp/path.config.json')
 const TASK_CONFIG = require('./gulp/task.config')
 
 // Fallback for windows backs out of node_modules folder to root of project
@@ -11,11 +12,16 @@ let PATHS = PATH_CONFIG
 
 if (util.env.config) {
 	try {
-		const PATH_OVERWRITES = require(`./gulp/path.config.${util.env
-			.config}.json`)
+		const PATH_OVERWRITES = require(path.resolve(
+			process.env.PWD,
+			`config/path.config.${util.env.config}.json`
+		))
 		PATHS = { ...PATH_CONFIG, ...PATH_OVERWRITES }
 	} catch (e) {
-		throw new Error(e)
+		throw new Error(
+			`config/path.config.${util.env
+				.config}.json can not be found, ${e.name}: ${e.message}`
+		)
 	}
 }
 
@@ -28,14 +34,16 @@ global.BUILD_TYPE = util.env.config
 global.log = util.log
 
 log(
-	`                  _    ___             _       _ 
-		 _____ _ _ _| |  |  _|___ ___ ___| |_ ___| |
-		|     | | | . |  |  _|  _| .'|  _|  _| .'| |
-		|_|_|_|___|___|  |_| |_| |__,|___|_| |__,|_|
-																																	
-		ENV: ${global.env}, 
-		CONFIG: ${util.env.config ? util.env.config : 'Development'}
-	`
+	` 
+	                 __        
+	.--------.--.--.|  |.-----.
+	|        |  |  ||  ||  _  |
+	|__|__|__|_____||__||   __|
+                            |__|
+	
+	ENV: ${global.env}, CONFIG: ${util.env.config
+		? util.env.config
+		: 'Development'}`
 )
 
 requireDir('./gulp/tasks', {
