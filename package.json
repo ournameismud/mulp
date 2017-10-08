@@ -23,7 +23,7 @@
 		"start": "mulp",
 		"cms": "yarn run mulp -- -- --config cms",
 		"build": "yarn run mulp -- build -- --env production --config cms",
-		"build:cms": "yarn run cms",
+		"build:cms": "yarn run build",
 		"build:fractal":
 			"yarn run mulp -- build -- --env production --config fractal",
 		"prebuild:static": "yarn run build:fractal",
