@@ -2,22 +2,26 @@
   Settings
 */
 @import '../../node_modules/modularscale-sass/stylesheets/_modularscale.scss';
-@import '../../node_modules/sass-mq/mq.scss';
-@import 'susy';
-@import 'plugins/svg-grid';
-@import 'normalize';
-@import '_config/breakpoints';
-@import '_config/base';
-@import '_config/fonts';
-@import '_config/colors';
-@import '_config/dimensions';
-@import '_config/type-config';
 
 /*
-  svg-symbols generated via `gulp symbols`
+  Utilities and functions
 */
-@import '_system/core/utilities';
-@import '_system/gulp-output/svg-symbols';
+
+@import '_system/core/units';
+@import '_system/core/colors';
+@import '_system/core/type';
+@import '_system/core/spaces';
+@import '_system/core/mq';
+@import '_system/core/misc';
+
+/*
+  Settings
+*/
+@import '_config/base';
+@import '_tokens/fonts';
+@import '_tokens/colors';
+@import '_tokens/breakpoints';
+@import '_config/dimensions';
 
 $debug: false;
 
@@ -28,7 +32,7 @@ $debug: false;
   Utility functions
 */
 
-@import '_system/core/utilities';
+@import '_system/gulp-output/svg-symbols';
 
 .Header {
 	background-color: c(base, brand);
