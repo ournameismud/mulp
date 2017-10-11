@@ -55,10 +55,10 @@ function devServer() {
 	const compiler = webpack(config)
 	const proxyConfig = SERVER.proxy || null
 
+	console.log(PATH_CONFIG.browserSync)
+
 	if (typeof proxyConfig === 'string') {
-		SERVER.proxy = {
-			target: proxyConfig
-		}
+		SERVER.proxy = proxyConfig
 	}
 
 	// Resolve path from PWD
@@ -83,7 +83,8 @@ function devServer() {
 		require('webpack-hot-middleware')(compiler)
 	]
 
-	SERVER.open = false
-
-	browserSync.init(SERVER)
+	browserSync.init({
+		...SERVER,
+		...TASK_CONFIG.server
+	})
 }
