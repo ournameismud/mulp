@@ -83,7 +83,9 @@ function devServer() {
 		require('webpack-hot-middleware')(compiler)
 	]
 
-	SERVER.open = false
 
-	browserSync.init(SERVER)
+	browserSync.init({
+		SERVER,
+		...TASK_CONFIG.server
+	})
 }
