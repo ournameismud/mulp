@@ -3,6 +3,7 @@ const changed = require('gulp-changed')
 const path = require('path')
 const browserSync = require('browser-sync')
 const gulpSequence = require('gulp-sequence')
+const htmlmin = require('gulp-htmlmin')
 
 module.exports = {
 	twigTemplates,
@@ -24,6 +25,7 @@ function twigTemplates(resp) {
 		gulp
 			.src(path.resolve(process.env.PWD, src))
 			.pipe(changed(d))
+			.pipe(htmlmin({ collapseWhitespace: true }))
 			.pipe(gulp.dest(d))
 			.pipe(browserSync.stream())
 	}
@@ -57,6 +59,7 @@ function twig() {
 	return gulp
 		.src(paths.src)
 		.pipe(changed(paths.dest))
+		.pipe(htmlmin({ collapseWhitespace: true }))
 		.pipe(gulp.dest(paths.dest))
 		.pipe(browserSync.stream())
 }
