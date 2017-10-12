@@ -55,12 +55,11 @@ function devServer() {
 	const compiler = webpack(config)
 	const proxyConfig = SERVER.proxy || null
 
-	console.log(PATH_CONFIG.browserSync)
-
 	if (typeof proxyConfig === 'string') {
-		SERVER.proxy = proxyConfig
+		SERVER.proxy = {
+			target: proxyConfig
+		}
 	}
-
 	// Resolve path from PWD
 	if (SERVER.server && SERVER.server.baseDir) {
 		SERVER.server.baseDir = path.resolve(process.env.PWD, SERVER.server.baseDir)
