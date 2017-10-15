@@ -168,11 +168,11 @@ function exportPaths() {
 				: item.handle
 
 			const dest = path
-				.relative(process.cwd(), item.viewDir)
+				.resolve(process.env.PWD, item.viewDir)
 				.split('templates/')[1]
 
 			map[`@${file}`] = {
-				src: path.relative(process.cwd(), item.viewPath),
+				src: path.resolve(process.env.PWD, item.viewPath),
 				dest: `fractal/${dest}`,
 				file: `${file}.twig`
 			}

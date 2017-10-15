@@ -1,5 +1,6 @@
 const gulp = require('gulp')
 const htmlreplace = require('gulp-html-replace')
+const path = require('path')
 
 module.exports = {
 	cacheBusterTask
@@ -29,11 +30,11 @@ function cacheBusterTask() {
 	const files = global.env === 'production' ? production : development
 
 	return gulp
-		.src(PATH_CONFIG.tags.src)
+		.src(path.resolve(process.env.PWD, PATH_CONFIG.tags.src))
 		.pipe(
 			htmlreplace(files, {
 				keepBlockTags: true
 			})
 		)
-		.pipe(gulp.dest(PATH_CONFIG.tags.dest))
+		.pipe(gulp.dest(path.resolve(process.env.PWD, PATH_CONFIG.tags.dest)))
 }

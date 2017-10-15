@@ -8,7 +8,6 @@ const path = require('path')
 const { getTasks } = require('../libs/utils')
 const { fractal, exportPaths } = require('./fractal')
 const del = require('del')
-const { twigTemplates } = require('./twig')
 
 module.exports = {
 	buildCode,
@@ -51,7 +50,7 @@ function buildFractal() {
 	builder.on('error', err => logger.error(err.message))
 	return builder.build().then(() => {
 		logger.success('Fractal build completed!')
-		exportPaths().then(twigTemplates)
+		exportPaths()
 	})
 }
 
@@ -59,12 +58,16 @@ function buildCode(cb) {
 	const { assetTasks, codeTasks } = getTasks()
 	assetTasks.push('move-scripts')
 	codeTasks.push('bundle-script')
+
+	if (PATH_CONFIG.critical) {
+		codeTasks.push('critical')
+	}
+
 	gulpSequence(
 		'clean:dist',
 		assetTasks,
 		codeTasks,
 		'cacheBuster',
-		'critical',
 		'size-report',
 		cb
 	)

@@ -20,6 +20,24 @@
 				"output": {
 					"dist": "./"
 				}
+			},
+			{
+				"input": {
+					"url": "components/preview/standard.html",
+					"source": "standard.html"
+				},
+				"output": {
+					"dist": "./"
+				}
+			},
+			{
+				"input": {
+					"url": "components/preview/timeline.html",
+					"source": "timeline.html"
+				},
+				"output": {
+					"dist": "./"
+				}
 			}
 		]
 	}

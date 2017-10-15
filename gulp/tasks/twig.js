@@ -7,7 +7,8 @@ const htmlmin = require('gulp-htmlmin')
 
 module.exports = {
 	twigTemplates,
-	twig
+	twig,
+	updateTwigTemplates
 }
 
 gulp.task('updateTwigTemplates', updateTwigTemplates)
@@ -25,7 +26,7 @@ function twigTemplates(resp) {
 		gulp
 			.src(path.resolve(process.env.PWD, src))
 			.pipe(changed(d))
-			.pipe(htmlmin({ collapseWhitespace: true }))
+			//.pipe(htmlmin({ collapseWhitespace: true }))
 			.pipe(gulp.dest(d))
 			.pipe(browserSync.stream())
 	}
@@ -37,7 +38,6 @@ function updateTwigTemplates() {
 		PATH_CONFIG.craftTemplates.config,
 		'components-map.json'
 	)
-
 	twigTemplates(require(json))
 }
 
@@ -56,10 +56,12 @@ function twig() {
 		dest: path.resolve(process.env.PWD, PATH_CONFIG.twig.dest)
 	}
 
-	return gulp
-		.src(paths.src)
-		.pipe(changed(paths.dest))
-		.pipe(htmlmin({ collapseWhitespace: true }))
-		.pipe(gulp.dest(paths.dest))
-		.pipe(browserSync.stream())
+	return (
+		gulp
+			.src(paths.src)
+			.pipe(changed(paths.dest))
+			//.pipe(htmlmin({ collapseWhitespace: true }))
+			.pipe(gulp.dest(paths.dest))
+			.pipe(browserSync.stream())
+	)
 }

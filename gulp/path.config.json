@@ -10,15 +10,15 @@
 		}
 	},
 
+	"staticAssets": {
+		"src": "static",
+		"dest": "./desploy/static"
+	},
+
 	"craftTemplates": {
 		"src": "./deploy/craft/templates",
 		"config": "./deploy",
 		"dest": "./deploy"
-	},
-
-	"staticAssets": {
-		"src": "static",
-		"dest": "./desploy/static"
 	},
 
 	"twig": {
@@ -104,7 +104,7 @@
 	"tokens": {
 		"src": "tokens",
 		"files": ["colors.json", "fonts.json", "breakpoints.json"],
-		"dest": "scss/_config"
+		"dest": "scss/_tokens"
 	},
 
 	"critical": {

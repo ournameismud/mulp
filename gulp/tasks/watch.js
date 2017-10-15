@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-consts */
 const gulp = require('gulp')
 const path = require('path')
 const watch = require('gulp-watch')
@@ -16,6 +15,8 @@ function watchTasks() {
 	if (util.env.config === 'cms') {
 		watchList.push('twig')
 	}
+
+	// console.log(watchList)
 
 	watchList.forEach(taskName => {
 		const taskConfig = TASK_CONFIG[taskName]

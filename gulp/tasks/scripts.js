@@ -60,7 +60,11 @@ function serviceWorker() {
 		.pipe(gulpif(PRODUCTION, uglify()))
 		.pipe(
 			gulp.dest(
-				path.resolve(PATH_CONFIG.public, PATH_CONFIG.serviceWorker.dest)
+				path.resolve(
+					process.env.PWD,
+					PATH_CONFIG.public,
+					PATH_CONFIG.serviceWorker.dest
+				)
 			)
 		)
 		.pipe(browserSync.stream())
