@@ -20,20 +20,5 @@
 		"js": "/dist/js/"
 	},
 
-	"critical": {
-		"templates": "./src/templates",
-		"urlBase": "./deploy/library",
-		"outputBase": "./src/templates",
-		"paths": [
-			{
-				"input": {
-					"url": "components/preview/home.html",
-					"source": "06-pages/home/home.twig"
-				},
-				"output": {
-					"dist": "06-pages/home"
-				}
-			}
-		]
-	}
+	"critical": false
 }

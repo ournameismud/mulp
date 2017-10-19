@@ -5,7 +5,10 @@ const { getWatch } = require('../libs/utils')
 const tasks = require('./')
 const util = require('gulp-util')
 
-const serverTask = util.env.config === 'cms' ? 'server:cms' : 'server:fractal'
+const serverTask =
+	util.env.config === 'cms'
+		? 'server:cms'
+		: TASK_CONFIG.mode === 'fractal' ? 'server:fractal' : 'server:cms'
 
 gulp.task('watch', [serverTask], watchTasks)
 
