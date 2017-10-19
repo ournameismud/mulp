@@ -62,41 +62,15 @@
 @import 'framework/base';
 
 /*
-  Base styles
-  Typography, Buttons, Tables, Form elements, Etc
+  [01] Base Styles
+  [02] Object patterns
+  [03] Global elements patterns
+  [04] Components patterns
+  [05] Grids and macro layouts
+  [06] Pages
 */
 
-@import '../templates/01-base/**/**/*';
-
-/*
-  Object patterns
-*/
-
-@import '../templates/02-objects/**/**/*';
-
-/*
-  Global elements patterns
-*/
-
-@import '../templates/03-global/**/**/*';
-
-/*
-  Components patterns
-*/
-
-@import '../templates/04-components/**/**/*';
-
-/*
-  Grids and macro layouts
-*/
-
-@import '../templates/05-layouts/**/**/*';
-
-/*
-  Pages
-*/
-
-@import '../templates/06-pages/**/**/*';
+@import '../templates/**/**/**/*';
 
 /*
   Utility classes
