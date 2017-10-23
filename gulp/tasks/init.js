@@ -1,37 +1,70 @@
 const gulp = require('gulp')
 const gutil = require('gulp-util')
+const rename = require('gulp-rename')
 const path = require('path')
 const fs = require('fs')
-const merge = require('merge-stream')
-const { handleErrors } = require('../libs/utils')
 
-function initConfig(cb) {
-	if (fs.existsSync('config')) {
-		console.info('config folder already exists, skipping init:config task')
-		return
-	}
-
+function initTaskConfig(mode) {
 	return gulp
-		.src([
-			'gulp/path.config.json',
-			'gulp/path.config.cms.json',
-			'gulp/path.config.fractal.json',
-			'gulp/task.config.js'
-		])
+		.src([`gulp/modes/${mode}.task.js`])
+		.pipe(
+			rename({
+				basename: 'task.config'
+			})
+		)
 		.pipe(gulp.dest(path.join(process.env.PWD, 'config')))
 }
 
-function scaffoldProject(cb) {
-	if (fs.existsSync('src')) {
-		console.info('src folder already exists, skipping init:files task')
+function initPathConfig(mode) {
+	return gulp
+		.src([`gulp/modes/${mode}.path.json`])
+		.pipe(
+			rename({
+				basename: 'path.config'
+			})
+		)
+		.pipe(gulp.dest(path.join(process.env.PWD, 'config')))
+}
+
+function initFiles(node) {
+	return gulp
+		.src(['src/**/*', `templates/${node}/**/*`, '*.gitkeep'])
+		.pipe(gulp.dest(path.join(process.env.PWD, PATH_CONFIG.src)))
+}
+
+function initCraft() {
+	if (fs.existsSync('config')) {
+		gutil.log('config folder already exists, skipping init:config task')
 		return
 	}
 
 	return gulp
-		.src(['src/**/*', '*.gitkeep'])
-		.pipe(gulp.dest(path.join(process.env.PWD, PATH_CONFIG.src)))
+		.src(['gulp/path.config.cms.json'])
+		.pipe(gulp.dest(path.join(process.env.PWD, 'config')))
 }
 
-gulp.task('init:config', initConfig)
-gulp.task('init:files', scaffoldProject)
-gulp.task('init', ['init:config', 'init:files'])
+gulp.task('init:fractal', () => {
+	init('fractal')
+})
+
+gulp.task('init:html', () => {
+	init('html')
+})
+
+function init(mode) {
+	if (fs.existsSync('config')) {
+		gutil.log('config folder already exists, skipping init:config task')
+		return
+	}
+
+	initPathConfig(mode)
+	initTaskConfig(mode)
+	initCraft()
+
+	if (fs.existsSync('src')) {
+		gutil.log('config folder already exists, skipping init:config task')
+		return
+	}
+
+	initFiles(mode)
+}

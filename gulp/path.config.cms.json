@@ -5,12 +5,7 @@
 	},
 
 	"symbols": {
-		"src": "images/svg-symbols",
-		"dest": "dist/images",
-		"fileName": "_symbols.twig",
-		"fileDest": "../deploy/craft/templates/includes",
-		"json": "symbols.json",
-		"docs": "tokens"
+		"fileDest": "../deploy/craft/templates/includes"
 	},
 
 	"tags": {

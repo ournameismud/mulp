@@ -4,7 +4,7 @@ const path = require('path')
 const backstopjs = require('backstopjs')
 const util = require('gulp-util')
 const requireGlob = require('require-glob')
-
+const { resolvePath } = require('../utils/paths')
 module.exports = {
 	test
 }
@@ -18,8 +18,7 @@ function test() {
 	const test = task === 'reference' ? 'ready' : 'test'
 
 	requireGlob(
-		path.resolve(
-			process.env.PWD,
+		resolvePath(
 			PATH_CONFIG.src,
 			PATH_CONFIG.fractal.templates,
 			'**/**/*.test.config.js'

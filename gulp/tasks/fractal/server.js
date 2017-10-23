@@ -1,7 +1,7 @@
-const { fractal } = require('./fractal')
+const { fractal } = require('./')
 const webpack = require('webpack')
-const webpackConfig = require('./webpack.config.babel')
-const { pathToUrl } = require('../libs/utils')
+const webpackConfig = require('../webpack.config.babel')
+const { pathToUrl } = require('../../utils/paths')
 const path = require('path')
 
 module.exports = {

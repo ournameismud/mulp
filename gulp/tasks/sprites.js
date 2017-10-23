@@ -26,7 +26,7 @@ function sprites() {
 		)
 	}
 
-	TASK_CONFIG.sprites.mode.css.render.scss.dest = `/_assets/${PATH_CONFIG.scss
+	TASK_CONFIG.sprites.mode.css.render.scss.dest = `/src/${PATH_CONFIG.scss
 		.src}/${dest}`
 	TASK_CONFIG.sprites.mode.css.render.scss.template = path.resolve(
 		process.env.PWD,

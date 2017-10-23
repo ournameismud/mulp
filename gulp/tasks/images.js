@@ -2,7 +2,7 @@ const changed = require('gulp-changed')
 const gulp = require('gulp')
 const imagemin = require('gulp-imagemin')
 const browserSync = require('browser-sync')
-const { getPaths } = require('../libs/utils')
+const { getPaths } = require('../utils/paths')
 
 module.exports = {
 	images

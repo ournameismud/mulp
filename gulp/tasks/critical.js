@@ -14,7 +14,6 @@ gulp.task('critical', critialCss)
 
 function critialCss() {
 	const { paths, templates, urlBase, outputBase } = PATH_CONFIG.critical
-	console.log('starting critical css')
 	Promise.all(
 		paths.map(({ input, output }) => {
 			const { url, source } = input
@@ -26,7 +25,6 @@ function critialCss() {
 					...TASK_CONFIG.critical
 				})
 				.then(output => {
-					console.log(`critical: ${name}`)
 					gulp
 						.src(path.resolve(process.env.PWD, templates, source))
 						.pipe(
@@ -52,7 +50,7 @@ function critialCss() {
 						)
 						.pipe(gulp.dest(path.resolve(process.env.PWD, outputBase, dist)))
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(err))
 		})
 	).then(updateTwigTemplates)
 }

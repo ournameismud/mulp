@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const webpackConfig = require('../webpack.config.babel')
-const { pathToUrl } = require('../../libs/utils')
+const { pathToUrl } = require('../../utils/paths')
 const path = require('path')
 const browserSync = require('browser-sync')
 

@@ -1,6 +1,6 @@
 const gulp = require('gulp')
 const svgmin = require('gulp-svgmin')
-const { handleErrors } = require('../libs/utils')
+const { handleErrors } = require('../utils/logs')
 const inject = require('gulp-inject')
 const gulpif = require('gulp-if')
 const svgSymbols = require('gulp-svg-symbols')
@@ -30,7 +30,7 @@ function symbols() {
 			PATH_CONFIG.public,
 			PATH_CONFIG.symbols.dest
 		),
-		scssTemplate: path.resolve(__dirname, '../libs/symbols.tmp.scss'),
+		scssTemplate: path.resolve(__dirname, '../utils/symbols.tmp.scss'),
 		scssOutputPath: path.resolve(
 			process.env.PWD,
 			PATH_CONFIG.src,

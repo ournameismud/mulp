@@ -1,0 +1,32 @@
+{
+  "@home": {
+    "src": "/Users/magicspon/websites/_mud/mulp/src/templates/06-pages/home/home.twig",
+    "dest": "fractal/06-pages/home",
+    "handle": "home",
+    "file": "home.twig"
+  },
+  "@home--test": {
+    "src": "/Users/magicspon/websites/_mud/mulp/src/templates/06-pages/home/home--test.twig",
+    "dest": "fractal/06-pages/home",
+    "handle": "home--test",
+    "file": "home--test.twig"
+  },
+  "@home--pubes": {
+    "src": "/Users/magicspon/websites/_mud/mulp/src/templates/06-pages/home/home.twig",
+    "dest": "fractal/06-pages/home",
+    "handle": "home--pubes",
+    "file": "home--pubes.twig"
+  },
+  "@layout": {
+    "src": "/Users/magicspon/websites/_mud/mulp/src/templates/wrapper/_layout.twig",
+    "dest": "fractal/wrapper",
+    "handle": "layout",
+    "file": "layout.twig"
+  },
+  "@symbols": {
+    "src": "/Users/magicspon/websites/_mud/mulp/src/templates/wrapper/_symbols.twig",
+    "dest": "fractal/wrapper",
+    "handle": "symbols",
+    "file": "symbols.twig"
+  }
+}

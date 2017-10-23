@@ -19,7 +19,12 @@ function _titleCase(str) {
 		.join(' ')
 }
 
-export const twigConf = stamp => {
+module.exports = {
+	templateEngine,
+	docsEngine
+}
+
+function templateEngine(stamp) {
 	return {
 		filters: {
 			markdown(str) {
@@ -68,34 +73,36 @@ export const twigConf = stamp => {
 	}
 }
 
-export const docNujs = require('@frctl/nunjucks')({
-	filters: {
-		markdown(str) {
-			return md.render(str)
+function docsEngine() {
+	return {
+		filters: {
+			markdown(str) {
+				return md.render(str)
+			},
+			markdownInline(str) {
+				return md.renderInline(str)
+			},
+			key(str, key) {
+				return str[key]
+			},
+			slugify(str) {
+				return str.toLowerCase().replace(/[^\w]+/g, '')
+			},
+			stringify() {
+				return JSON.stringify(this, null, '\t')
+			},
+			first(str) {
+				return str[0]
+			},
+			collection(val) {
+				return Array(val).fill(0)
+			},
+			limit(array, count) {
+				return array.slice(0, count)
+			}
 		},
-		markdownInline(str) {
-			return md.renderInline(str)
-		},
-		key(str, key) {
-			return str[key]
-		},
-		slugify(str) {
-			return str.toLowerCase().replace(/[^\w]+/g, '')
-		},
-		stringify() {
-			return JSON.stringify(this, null, '\t')
-		},
-		first(str) {
-			return str[0]
-		},
-		collection(val) {
-			return Array(val).fill(0)
-		},
-		limit(array, count) {
-			return array.slice(0, count)
+		globals: {
+			title: TASK_CONFIG.title
 		}
-	},
-	globals: {
-		title: TASK_CONFIG.title
 	}
-})
+}

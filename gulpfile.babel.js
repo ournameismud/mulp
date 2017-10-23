@@ -1,7 +1,8 @@
-const { getPathConfig, getTaskConfig } = require('./gulp/libs/utils')
+const { getPathConfig, getTaskConfig } = require('./gulp/utils/paths')
 const requireDir = require('require-dir')
 const util = require('gulp-util')
 const path = require('path')
+const deepmerge = require('deepmerge')
 const PATH_CONFIG = getPathConfig()
 const TASK_CONFIG = getTaskConfig()
 
@@ -10,6 +11,7 @@ process.env.PWD = process.env.PWD || __dirname
 
 const { env } = util.env
 let PATHS = PATH_CONFIG
+global.SERVER = PATHS.browserSync
 
 if (util.env.config) {
 	try {
@@ -17,7 +19,9 @@ if (util.env.config) {
 			process.env.PWD,
 			`config/path.config.${util.env.config}.json`
 		))
-		PATHS = { ...PATH_CONFIG, ...PATH_OVERWRITES }
+		PATHS = deepmerge(PATH_CONFIG, PATH_OVERWRITES)
+
+		global.SERVER = PATH_OVERWRITES.browserSync || global.SERVER
 	} catch (e) {
 		throw new Error(
 			`config/path.config.${util.env
@@ -29,7 +33,6 @@ if (util.env.config) {
 global.env = env ? env : 'development'
 global.PRODUCTION = global.env === 'production'
 global.PATH_CONFIG = PATHS
-global.SERVER = PATHS.browserSync
 global.TASK_CONFIG = TASK_CONFIG
 global.BUILD_TYPE = util.env.config
 global.log = util.log

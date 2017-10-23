@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const path = require('path')
 const watch = require('gulp-watch')
-const { getWatch } = require('../libs/utils')
+const { getWatch } = require('../utils/tasks')
 const tasks = require('./')
 const util = require('gulp-util')
 
@@ -15,11 +15,9 @@ gulp.task('watch', [serverTask], watchTasks)
 function watchTasks() {
 	const { watchList } = getWatch()
 
-	if (util.env.config === 'cms') {
-		watchList.push('twig')
-	}
-
-	// console.log(watchList)
+	// if (util.env.config === 'cms' && TASK_CONFIG.mode === 'fractal') {
+	// 	watchList.push('craftTemplates')
+	// }
 
 	watchList.forEach(taskName => {
 		const taskConfig = TASK_CONFIG[taskName]
@@ -44,7 +42,6 @@ function watchTasks() {
 				(taskConfig.extensions
 					? '.{' + taskConfig.extensions.join(',') + '}'
 					: '')
-
 			const files =
 				taskName === 'scss'
 					? [
@@ -58,6 +55,7 @@ function watchTasks() {
 					: path.join(srcPath, globPattern)
 
 			watch(files, watchConfig, function() {
+				console.log(taskName)
 				tasks[`${taskName}`]()
 			})
 		}

@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const webpack = require('webpack')
 const inject = require('gulp-inject')
-const { logger } = require('../libs/utils')
+const { logger } = require('../utils/logs')
 const webpackConfig = require('./webpack.config.babel')
 const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')

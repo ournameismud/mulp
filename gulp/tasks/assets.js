@@ -2,7 +2,7 @@ const browserSync = require('browser-sync')
 const changed = require('gulp-changed')
 const gulp = require('gulp')
 const cssnano = require('gulp-cssnano')
-const { getPaths } = require('../libs/utils')
+const { getPaths } = require('../utils/paths')
 const path = require('path')
 
 module.exports = {

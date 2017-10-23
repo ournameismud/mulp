@@ -1,6 +1,6 @@
 const gulp = require('gulp')
 const gulpSequence = require('gulp-sequence')
-const { getTasks } = require('../libs/utils')
+const { getTasks } = require('../utils/tasks')
 
 module.exports = {
 	defaultTask

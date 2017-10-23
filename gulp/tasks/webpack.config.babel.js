@@ -4,7 +4,7 @@ const path = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const querystring = require('querystring')
 const { removeEmpty } = require('webpack-config-utils')
-const { pathToUrl } = require('../libs/utils')
+const { pathToUrl } = require('../utils/paths')
 
 module.exports = env => {
 	const context = path.resolve(

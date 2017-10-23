@@ -1,9 +1,8 @@
 const path = require('path')
+const $pkg = require(path.resolve(process.env.PWD, 'package.json'))
 
 module.exports = {
-	mode: 'fractal',
-
-	title: 'Mudstone',
+	title: $pkg.name,
 
 	stamp: Date.now(),
 
@@ -48,12 +47,6 @@ module.exports = {
 		extensions: ['json']
 	},
 
-	twig: {
-		watch: false,
-		task: 'code',
-		extensions: ['twig']
-	},
-
 	scss: {
 		task: 'code',
 		watch: true,
@@ -71,12 +64,6 @@ module.exports = {
 		lintIgnorePaths: ['_system/**/*.scss', '_config/*.scss'],
 		filename: 'style' // no extension
 	},
-
-	// craftTemplates: {
-	// 	task: 'asset',
-	// 	watch: true,
-	// 	extensions: ['twig', 'html']
-	// },
 
 	images: {
 		task: 'asset',
@@ -111,7 +98,7 @@ module.exports = {
 				render: {
 					scss: {
 						dest: '_system/gulp-output/_svg-sprites.scss',
-						template: 'gulp/libs/sprites.tmp.scss'
+						template: 'gulp/utils/sprites.tmp.scss'
 					}
 				}
 			}
@@ -140,7 +127,7 @@ module.exports = {
 	symbols: {
 		task: 'asset',
 		watch: true,
-		scssTemplate: '../gulp/libs/symbols.tmp.scss',
+		scssTemplate: '../gulp/utils/symbols.tmp.scss',
 		scssOutputPath: 'scss/_system/gulp-output/',
 		scssOutputFile: '_svg-symbols.scss',
 		sourceFile: 'images/svg-symbols/source.html',

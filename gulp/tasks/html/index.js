@@ -7,7 +7,8 @@ const htmlmin = require('gulp-htmlmin')
 const htmlbeautify = require('gulp-html-beautify')
 const path = require('path')
 const fs = require('fs')
-const { getPaths, handleErrors } = require('../../libs/utils')
+const { getPaths } = require('../../utils/paths')
+const { handleErrors } = require('../../utils/logs')
 
 module.exports = {
 	html
@@ -36,8 +37,7 @@ function html() {
 			const dataPath = path.resolve(
 				process.env.PWD,
 				PATH_CONFIG.src,
-				PATH_CONFIG.html.src,
-				TASK_CONFIG.html.dataFile
+				PATH_CONFIG.html.data
 			)
 			return { ...JSON.parse(fs.readFileSync(dataPath, 'utf8')), stamp }
 		}

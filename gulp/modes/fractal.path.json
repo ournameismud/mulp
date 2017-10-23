@@ -1,0 +1,37 @@
+{
+	"fractal": {
+		"templates": "templates",
+		"tmp": "./tmp/public",
+		"library": "./deploy/library",
+		"craft": "./deploy/",
+		"map": "./deploy/components-map.json"
+	},
+
+	"tokens": {
+		"src": "tokens",
+		"files": [],
+		"dest": "scss/_tokens"
+	},
+
+	"craftTemplates": {
+		"src": "templates",
+		"dest": "./deploy/fractal"
+	},
+
+	"critical": {
+		"templates": "./deploy/library/components/preview",
+		"urlBase": "./deploy/library",
+		"outputBase": "./deploy/library/components/preview",
+		"paths": [
+			{
+				"input": {
+					"url": "components/preview/home.html",
+					"source": "home.html"
+				},
+				"output": {
+					"dist": "./"
+				}
+			}
+		]
+	}
+}

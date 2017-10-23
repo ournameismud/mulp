@@ -17,7 +17,7 @@ const styleLint = require('gulp-stylelint')
 const rucksack = require('rucksack-css')
 const sassVariables = require('gulp-sass-variables')
 const browserSync = require('browser-sync')
-const { handleErrors } = require('../libs/utils')
+const { handleErrors } = require('../utils/logs')
 const path = require('path')
 const util = require('gulp-util')
 
