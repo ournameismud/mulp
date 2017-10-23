@@ -1,7 +1,7 @@
 {
 	"name": "mulp",
 	"description": "Gulp tasks and Fractal",
-	"version": "0.0.11",
+	"version": "0.1.0-alpha.1",
 	"main": "gulpfile.babel.js",
 	"author": "Dave Stockley",
 	"license": "MIT",
@@ -24,7 +24,8 @@
 		"cms": "gulp --config cms",
 		"build": "gulp --env production --config cms",
 		"build:cms": "yarn run build",
-		"build:fractal": "yarn run mulp -- build -- --env production --config fractal",
+		"build:fractal":
+			"yarn run mulp -- build -- --env production --config fractal",
 		"prebuild:static": "yarn run build:fractal",
 		"build:static": "mulp -- build:static -- --config static",
 		"update:craft": "mulp -- update:craft -- --config cms --env production",
