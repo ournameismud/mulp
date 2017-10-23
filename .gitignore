@@ -11,8 +11,13 @@
 ehthumbs.db
 Thumbs.db
 npm-debug.log
+#.editorconfig
+private
+.idea
+__MACOSX
 node_modules
 dist
 tmp
 config
 src/templates
+deploy
