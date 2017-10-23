@@ -26,41 +26,43 @@ function critialCss() {
 							src: url
 						}
 					: {
-							base: urlBase,
+							base: path.resolve(process.env.PWD, urlBase),
 							src: url
 						}
-			return critical
-				.generate({
-					...options,
-					...TASK_CONFIG.critical
-				})
-				.then(output => {
-					gulp
-						.src(path.resolve(process.env.PWD, templates, source))
-						.pipe(
-							htmlreplace(
-								{
-									critical: {
-										src: null,
-										tpl: `<style>${output}</style>`
+			return new Promise((resolve, reject) => {
+				critical
+					.generate({
+						...options,
+						...TASK_CONFIG.critical
+					})
+					.then(output => {
+						gulp
+							.src(path.resolve(process.env.PWD, templates, source))
+							.pipe(
+								htmlreplace(
+									{
+										critical: {
+											src: null,
+											tpl: `<style>${output}</style>`
+										}
+									},
+									{
+										keepBlockTags: true
 									}
-								},
-								{
-									keepBlockTags: true
-								}
+								)
 							)
-						)
-						.pipe(
-							gulpif(
-								typeof name !== 'undefined',
-								rename({
-									basename: name
-								})
+							.pipe(
+								gulpif(
+									typeof name !== 'undefined',
+									rename({
+										basename: name
+									})
+								)
 							)
-						)
-						.pipe(gulp.dest(path.resolve(process.env.PWD, outputBase, dist)))
-				})
-				.catch(err => util.log(err))
+							.pipe(gulp.dest(path.resolve(process.env.PWD, outputBase, dist)))
+							.on('end', resolve)
+					})
+			}).catch(err => util.log(err))
 		})
 	)
 }
