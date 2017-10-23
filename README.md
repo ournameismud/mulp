@@ -16,9 +16,13 @@
 
 ###### Gettings Start
 
-Create project config files and folder structure
+Create project config files and folder structure (fractal mode)
 
-`yarn run mulp -- init`
+`yarn run mulp -- init:fractal`
+
+Create project config files and folder structure (html mode)
+
+`yarn run mulp -- init:html`
 
 Start development server
 
@@ -30,4 +34,4 @@ Use a custom path config file: `path.config.cms.json`
 
 Create a production build
 
-`yarn run mulp -- build -- --env production`
+`yarn run mulp -- build -- --env production --config cms`
