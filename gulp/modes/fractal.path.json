@@ -18,5 +18,20 @@
 		"dest": "./deploy/fractal"
 	},
 
-	"critical": false
+	"critical": {
+		"templates": "./deploy/library/components/preview",
+		"urlBase": "./deploy/library",
+		"outputBase": "./deploy/library/components/preview",
+		"paths": [
+			{
+				"input": {
+					"url": "components/preview/home.html",
+					"source": "home.html"
+				},
+				"output": {
+					"dist": "./"
+				}
+			}
+		]
+	}
 }

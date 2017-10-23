@@ -22,15 +22,9 @@
 	"scripts": {
 		"start": "gulp",
 		"cms": "gulp --config cms",
-		"build": "gulp --env production --config cms",
-		"build:cms": "yarn run build",
-		"build:fractal":
-			"yarn run mulp -- build -- --env production --config fractal",
-		"prebuild:static": "yarn run build:fractal",
-		"build:static": "mulp -- build:static -- --config static",
-		"update:craft": "mulp -- update:craft -- --config cms --env production",
-		"preinit:craft": "yarn run build:fractal",
-		"init:craft": "yarn run update:craft"
+		"build": "gulp build --env production --config cms",
+		"build:fractal": "gulp build -- --env production --config fractal",
+		"build:static": "gulp publish -- --env production --config fractal"
 	},
 	"dependencies": {
 		"@frctl/fractal": "^1.1.7",

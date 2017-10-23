@@ -1,10 +1,10 @@
 const gulp = require('gulp')
 const critical = require('critical')
+const util = require('gulp-util')
 const rename = require('gulp-rename')
 const gulpif = require('gulp-if')
 const htmlreplace = require('gulp-html-replace')
 const path = require('path')
-const { updateTwigTemplates } = require('./twig')
 
 module.exports = {
 	critialCss
@@ -14,7 +14,8 @@ gulp.task('critical', critialCss)
 
 function critialCss() {
 	const { paths, templates, urlBase, outputBase } = PATH_CONFIG.critical
-	Promise.all(
+	util.log('starting critical css')
+	return Promise.all(
 		paths.map(({ input, output }) => {
 			const { url, source } = input
 			const { name, dist } = output
@@ -50,7 +51,7 @@ function critialCss() {
 						)
 						.pipe(gulp.dest(path.resolve(process.env.PWD, outputBase, dist)))
 				})
-				.catch(err => console.error(err))
+				.catch(err => util.log(err))
 		})
-	).then(updateTwigTemplates)
+	)
 }

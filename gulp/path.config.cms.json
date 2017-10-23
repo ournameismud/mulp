@@ -15,5 +15,20 @@
 		"js": "/dist/js/"
 	},
 
-	"critical": false
+	"critical": {
+		"templates": "./deploy/fractal/06-pages",
+		"urlBase": "http://local.ournameismud.com",
+		"outputBase": "./deploy/fractal/06-pages",
+		"paths": [
+			{
+				"input": {
+					"url": "/",
+					"source": "home/home.html"
+				},
+				"output": {
+					"dist": "./home"
+				}
+			}
+		]
+	}
 }
