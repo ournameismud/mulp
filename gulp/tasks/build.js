@@ -114,7 +114,6 @@ function buildCode(cb) {
 }
 
 function cleanFractal() {
-	util.log('clean fractal')
 	return del(
 		[
 			path.resolve(process.env.PWD, PATH_CONFIG.fractal.library, '*.html'),
