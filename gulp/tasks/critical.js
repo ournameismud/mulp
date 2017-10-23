@@ -15,14 +15,23 @@ gulp.task('critical', critialCss)
 function critialCss() {
 	const { paths, templates, urlBase, outputBase } = PATH_CONFIG.critical
 	util.log('starting critical css')
+
 	return Promise.all(
 		paths.map(({ input, output }) => {
 			const { url, source } = input
 			const { name, dist } = output
+			const options =
+				util.env.config === 'cms'
+					? {
+							src: url
+						}
+					: {
+							base: urlBase,
+							src: url
+						}
 			return critical
 				.generate({
-					base: path.resolve(process.env.PWD, urlBase),
-					src: url,
+					...options,
 					...TASK_CONFIG.critical
 				})
 				.then(output => {

@@ -20,7 +20,8 @@ function build(cb) {
 					return fractalTemplates()
 				})
 				.then(() => {
-					return critialCss()
+					if (TASK_CONFIG.critical) return critialCss()
+					return
 				})
 		} else {
 			return buildFractal()
@@ -28,7 +29,8 @@ function build(cb) {
 					return buildCode(cb)
 				})
 				.then(() => {
-					return critialCss()
+					if (TASK_CONFIG.critical) return critialCss()
+					return
 				})
 		}
 	} else {
@@ -114,6 +116,7 @@ function buildCode(cb) {
 }
 
 function cleanFractal() {
+	util.log('clean fractal')
 	return del(
 		[
 			path.resolve(process.env.PWD, PATH_CONFIG.fractal.library, '*.html'),
