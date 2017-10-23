@@ -1,3 +1,6 @@
+const path = require('path')
+const $pkg = require(path.resolve(process.env.PWD, 'package.json'))
+
 module.exports = {
 	mode: 'fractal',
 
@@ -10,7 +13,7 @@ module.exports = {
 	fractal: {
 		layout: 'wrapper/_layout.twig',
 		context: {
-			siteTitle: 'Mudstone Component Library'
+			siteTitle: $pkg.name
 		},
 		statuses: {
 			tool: {

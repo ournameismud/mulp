@@ -33,5 +33,17 @@
 				}
 			}
 		]
+	},
+
+	"publish": {
+		"src": "./deploy/library/components/preview",
+		"public": "./deploy/public",
+		"html": [
+			{
+				"template": "home.html",
+				"output": "./",
+				"name": "index"
+			}
+		]
 	}
 }

@@ -17,13 +17,13 @@
 
 	"critical": {
 		"templates": "./deploy/fractal/06-pages",
-		"urlBase": "http://local.ournameismud.com",
+		"urlBase": "./deploy/public/",
 		"outputBase": "./deploy/fractal/06-pages",
 		"paths": [
 			{
 				"input": {
-					"url": "/",
-					"source": "home/home.html"
+					"url": "http://local.ournameismud.com/",
+					"source": "home/home.twig"
 				},
 				"output": {
 					"dist": "./home"
