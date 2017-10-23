@@ -1,4 +1,8 @@
-const { getPathConfig, getTaskConfig } = require('./gulp/utils/paths')
+const {
+	getPathConfig,
+	getTaskConfig,
+	getWebpackConfig
+} = require('./gulp/utils/paths')
 const requireDir = require('require-dir')
 const util = require('gulp-util')
 const path = require('path')
@@ -35,6 +39,7 @@ global.PRODUCTION = global.env === 'production'
 global.PATH_CONFIG = PATHS
 global.TASK_CONFIG = TASK_CONFIG
 global.BUILD_TYPE = util.env.config
+global.WEBPACK_CONFIG = getWebpackConfig(global.env)
 global.log = util.log
 
 log(
@@ -45,7 +50,7 @@ log(
 	|__|__|__|_____||__||   __|
                             |__|
 	
-	ENV: ${global.env}, CONFIG: ${util.env.config
+	ENV: ${global.env}, MODE: ${TASK_CONFIG.mode}, CONFIG: ${util.env.config
 		? util.env.config
 		: 'development'}`
 )

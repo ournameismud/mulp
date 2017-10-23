@@ -23,7 +23,7 @@ function build(cb) {
 					return fractalTemplates()
 				})
 				.then(() => {
-					console.log('SWEET')
+					console.log('All done')
 				})
 		} else {
 			buildFractal().then(() => {

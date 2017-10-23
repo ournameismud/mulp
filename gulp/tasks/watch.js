@@ -15,10 +15,6 @@ gulp.task('watch', [serverTask], watchTasks)
 function watchTasks() {
 	const { watchList } = getWatch()
 
-	// if (util.env.config === 'cms' && TASK_CONFIG.mode === 'fractal') {
-	// 	watchList.push('craftTemplates')
-	// }
-
 	watchList.forEach(taskName => {
 		const taskConfig = TASK_CONFIG[taskName]
 		const taskPath = PATH_CONFIG[taskName]
@@ -55,7 +51,6 @@ function watchTasks() {
 					: path.join(srcPath, globPattern)
 
 			watch(files, watchConfig, function() {
-				console.log(taskName)
 				tasks[`${taskName}`]()
 			})
 		}

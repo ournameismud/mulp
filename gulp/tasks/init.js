@@ -33,11 +33,6 @@ function initFiles(node) {
 }
 
 function initCraft() {
-	if (fs.existsSync('config')) {
-		gutil.log('config folder already exists, skipping init:config task')
-		return
-	}
-
 	return gulp
 		.src(['gulp/path.config.cms.json'])
 		.pipe(gulp.dest(path.join(process.env.PWD, 'config')))
@@ -52,7 +47,7 @@ gulp.task('init:html', () => {
 })
 
 function init(mode) {
-	if (fs.existsSync('config')) {
+	if (fs.existsSync(path.join(process.env.PWD, 'config'))) {
 		gutil.log('config folder already exists, skipping init:config task')
 		return
 	}
@@ -61,8 +56,8 @@ function init(mode) {
 	initTaskConfig(mode)
 	initCraft()
 
-	if (fs.existsSync('src')) {
-		gutil.log('config folder already exists, skipping init:config task')
+	if (fs.existsSync(path.join(process.env.PWD, PATH_CONFIG.src))) {
+		gutil.log('src folder already exists, skipping init:config task')
 		return
 	}
 

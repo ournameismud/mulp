@@ -1,6 +1,5 @@
 const { fractal } = require('./')
 const webpack = require('webpack')
-const webpackConfig = require('../webpack.config.babel')
 const { pathToUrl } = require('../../utils/paths')
 const path = require('path')
 
@@ -9,8 +8,7 @@ module.exports = {
 }
 
 function fractalServer() {
-	const config = webpackConfig(global.env)
-	const compiler = webpack(config)
+	const compiler = webpack(global.WEBPACK_CONFIG)
 	const logger = fractal.cli.console
 
 	fractal.web.set('server.syncOptions', {
@@ -18,7 +16,7 @@ function fractalServer() {
 		middleware: [
 			require('webpack-dev-middleware')(compiler, {
 				stats: 'errors-only',
-				publicPath: pathToUrl('/', config.output.publicPath)
+				publicPath: pathToUrl('/', global.WEBPACK_CONFIG.output.publicPath)
 			}),
 			require('webpack-hot-middleware')(compiler)
 		],

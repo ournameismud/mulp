@@ -2,7 +2,6 @@ const gulp = require('gulp')
 const webpack = require('webpack')
 const inject = require('gulp-inject')
 const { logger } = require('../utils/logs')
-const webpackConfig = require('./webpack.config.babel')
 const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')
 const gulpif = require('gulp-if')
@@ -20,8 +19,7 @@ gulp.task('inline-scripts', inlineScripts)
 gulp.task('bundle-script', webpackProduction)
 
 function webpackProduction(callback) {
-	const config = webpackConfig(global.env)
-	webpack(config, function(err, stats) {
+	webpack(global.WEBPACK_CONFIG, function(err, stats) {
 		logger(err, stats)
 		callback()
 	})

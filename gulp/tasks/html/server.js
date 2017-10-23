@@ -1,5 +1,4 @@
 const webpack = require('webpack')
-const webpackConfig = require('../webpack.config.babel')
 const { pathToUrl } = require('../../utils/paths')
 const path = require('path')
 const browserSync = require('browser-sync')
@@ -9,8 +8,7 @@ module.exports = {
 }
 
 function devServer() {
-	const config = webpackConfig(global.env)
-	const compiler = webpack(config)
+	const compiler = webpack(global.WEBPACK_CONFIG)
 	const proxyConfig = SERVER.proxy || null
 
 	if (typeof proxyConfig === 'string') {
@@ -35,7 +33,7 @@ function devServer() {
 	server.middleware = [
 		require('webpack-dev-middleware')(compiler, {
 			stats: 'errors-only',
-			publicPath: pathToUrl('/', config.output.publicPath)
+			publicPath: pathToUrl('/', global.WEBPACK_CONFIG.output.publicPath)
 		}),
 		require('webpack-hot-middleware')(compiler)
 	]

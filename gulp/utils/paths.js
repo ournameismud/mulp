@@ -7,7 +7,8 @@ module.exports = {
 	getPathConfig,
 	getTaskConfig,
 	getPaths,
-	pathToUrl
+	pathToUrl,
+	getWebpackConfig
 }
 
 function pathToUrl() {
@@ -73,4 +74,17 @@ function getTaskConfig() {
 	}
 
 	return defaultPathConfig
+}
+
+function getWebpackConfig(env) {
+	const customWebpack = path.resolve(
+		process.env.PWD,
+		'config/webpack.config.babel.js'
+	)
+
+	if (fs.existsSync(customWebpack)) {
+		return require(customWebpack)(env)
+	}
+
+	return require('../tasks/webpack.config.babel.js')(env)
 }
