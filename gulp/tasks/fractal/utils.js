@@ -33,7 +33,7 @@ function fractalTemplates(cb) {
 						})
 					)
 					.pipe(gulp.dest(d))
-					.on('end', resolve())
+					.on('end', resolve)
 			})
 		})
 	)
