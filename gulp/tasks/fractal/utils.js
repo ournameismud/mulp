@@ -12,31 +12,42 @@ module.exports = {
 gulp.task('fractalTemplates', fractalTemplates)
 
 function fractalTemplates(cb) {
-	const resp = require(path.resolve(process.env.PWD, PATH_CONFIG.fractal.map))
+	const map = path.resolve(process.env.PWD, PATH_CONFIG.fractal.map)
+
 	const fracts = []
 
-	for (const key in resp) {
-		const { src, dest, handle } = resp[key]
-		fracts.push({ src, dest, handle })
-	}
+	if (fs.existsSync(map)) {
+		const resp = require(map)
 
-	return Promise.all(
-		fracts.map(({ src, dest, handle }) => {
-			return new Promise(resolve => {
-				const d = path.resolve(process.env.PWD, PATH_CONFIG.fractal.craft, dest)
-				gulp
-					.src(path.resolve(process.env.PWD, src))
-					.pipe(changed(d))
-					.pipe(
-						rename({
-							basename: handle
-						})
+		for (const key in resp) {
+			const { src, dest, handle } = resp[key]
+			fracts.push({ src, dest, handle })
+		}
+
+		return Promise.all(
+			fracts.map(({ src, dest, handle }) => {
+				return new Promise(resolve => {
+					const d = path.resolve(
+						process.env.PWD,
+						PATH_CONFIG.fractal.craft,
+						dest
 					)
-					.pipe(gulp.dest(d))
-					.on('end', resolve)
+					gulp
+						.src(path.resolve(process.env.PWD, src))
+						.pipe(changed(d))
+						.pipe(
+							rename({
+								basename: handle
+							})
+						)
+						.pipe(gulp.dest(d))
+						.on('end', resolve)
+				})
 			})
-		})
-	)
+		)
+	} else {
+		return Promise.resolve()
+	}
 }
 
 function exportPaths(fractal) {
