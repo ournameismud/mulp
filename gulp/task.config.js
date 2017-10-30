@@ -19,10 +19,7 @@ module.exports = {
 
 	js: {
 		entries: {
-			app: ['./app.js']
-		},
-		serviceWorker: {
-			sw: ['./sw.js']
+			app: ['babel-polyfill', './app.js']
 		},
 		hot: {
 			enabled: true,
