@@ -1,16 +1,10 @@
-{% set layout = craft.getHeaders.fetch('x-barba') == 'true' 
-  ? "wrapper/_partial" 
-  : craft.getHeaders.fetch('X-JSON-Header')
-    ? "wrapper/_json"
-    : "wrapper/_layout" 
-%}
-{% set extend = craft is defined ? layout : '../wrapper/_layout.twig' %}
-{% extends extend %}
+{% extends '../wrapper/_layout.twig' %} 
+
 {% block critical_css %}
-	<!-- build:critical-->
-	<!-- endbuild -->
+<!-- build:critical-->
+<!-- endbuild -->
 {% endblock %}
 
-{% block content %}
+{% block content %} 
 
 {% endblock %}
