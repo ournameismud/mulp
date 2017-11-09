@@ -70,7 +70,7 @@ function getTaskConfig() {
 	const defaultPathConfig = require('../task.config')
 
 	if (fs.existsSync(customPathConfig)) {
-		return deepmerge(defaultPathConfig, require(customPathConfig))
+		return { ...defaultPathConfig, ...require(customPathConfig) }
 	}
 
 	return defaultPathConfig

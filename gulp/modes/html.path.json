@@ -7,7 +7,7 @@
 
 	"tokens": {
 		"src": "tokens",
-		"files": [],
+		"files": ["colors.json"],
 		"dest": "scss/_tokens"
 	}
 }
