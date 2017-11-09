@@ -32,6 +32,7 @@ function fractalTemplates(cb) {
 						PATH_CONFIG.fractal.craft,
 						dest
 					)
+
 					gulp
 						.src(path.resolve(process.env.PWD, src))
 						.pipe(changed(d))
@@ -64,7 +65,7 @@ function exportPaths(fractal) {
 
 			map[`@${handle}`] = {
 				src: path.resolve(process.env.PWD, item.viewPath),
-				dest: `fractal/${dest}`,
+				dest: `${PATH_CONFIG.craftTemplates.dest}/${dest}`,
 				handle: handle,
 				file: `${handle}.twig`
 			}
