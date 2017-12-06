@@ -20,7 +20,7 @@
 
 	"tokens": {
 		"src": "tokens",
-		"files": ["colors.json", "breakpoints.json", "fonts.json"],
+		"files": [],
 		"dest": "scss/_tokens"
 	},
 

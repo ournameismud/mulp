@@ -62,7 +62,6 @@ module.exports = {
 
 	js: {
 		entries: {
-			common: [],
 			app: ['./app.js']
 		},
 		hot: {
