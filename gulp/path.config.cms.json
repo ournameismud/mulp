@@ -1,47 +1,17 @@
 {
 	"public": "./deploy/web",
-	"dist": "app/themes/wbsl/dist/",
 
 	"browserSync": {
 		"proxy": "http://local.wbsl.com"
 	},
 
-	"js": {
-		"dest": "app/themes/wbsl/dist/js"
-	},
-
-	"scss": {
-		"dest": "app/themes/wbsl/dist/css"
-	},
-
-	"cssFonts": {
-		"dest": "app/themes/wbsl/dist/css"
-	},
-
-	"images": {
-		"dest": "app/themes/wbsl/dist/images"
-	},
-
-	"fonts": {
-		"dest": "app/themes/wbsl/dist/fonts"
-	},
-
-	"sprites": {
-		"dest": "app/themes/wbsl/dist/images"
-	},
-
-	"svgs": {
-		"dest": "app/themes/wbsl/dist/images"
-	},
-
 	"symbols": {
-		"dest": "app/themes/wbsl/dist/images",
-		"fileDest": "../deploy/web/app/themes/wbsl/templates/includes"
+		"fileDest": "../deploy/craft/templates/includes"
 	},
 
 	"tags": {
-		"src": "./deploy/web/app/themes/wbsl/templates/wrapper/_layout.twig",
-		"dest": "./deploy/web/app/themes/wbsl/templates/wrapper/",
+		"src": "./deploy/craft/templates/wrapper/_layout.twig",
+		"dest": "./deploy/craft/templates/wrapper/",
 		"css": "/dist/css/",
 		"js": "/dist/js/"
 	},

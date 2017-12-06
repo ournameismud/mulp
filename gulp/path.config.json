@@ -1,7 +1,7 @@
 {
 	"src": "./src",
 	"public": "./tmp/public",
-	"dist": "app/themes/wbsl/dist",
+	"dist": "dist",
 
 	"browserSync": {
 		"server": {
@@ -70,12 +70,8 @@
 
 	"js": {
 		"src": "js",
-		"dest": "app/themes/wbsl/dist/js",
-		"libs": [
-			"./node_modules/picturefill/dist/picturefill.min.js",
-			"./src/js/lib/pano2vr_player.js",
-			"./src/js/lib/skin.js"
-		]
+		"dest": "dist/js",
+		"libs": ["./node_modules/picturefill/dist/picturefill.min.js"]
 	},
 
 	"serviceWorker": {
@@ -100,39 +96,39 @@
 
 	"scss": {
 		"src": "scss",
-		"dest": "app/themes/wbsl/dist/css",
+		"dest": "dist/css",
 		"inlineSVG": "images/svg-assets",
 		"components": "templates/**/**/**/*.scss"
 	},
 
 	"cssFonts": {
 		"src": "scss",
-		"dest": "app/themes/wbsl/dist/css"
+		"dest": "dist/css"
 	},
 
 	"images": {
 		"src": "images/site",
-		"dest": "app/themes/wbsl/dist/images"
+		"dest": "dist/images"
 	},
 
 	"fonts": {
 		"src": "fonts",
-		"dest": "app/themes/wbsl/dist/fonts"
+		"dest": "dist/fonts"
 	},
 
 	"sprites": {
 		"src": "images/svg-sprites",
-		"dest": "app/themes/wbsl/dist/images"
+		"dest": "dist/images"
 	},
 
 	"svgs": {
 		"src": "images/svg-assets",
-		"dest": "app/themes/wbsl/dist/images"
+		"dest": "dist/images"
 	},
 
 	"symbols": {
 		"src": "images/svg-symbols",
-		"dest": "app/themes/wbsl/dist/images",
+		"dest": "dist/images",
 		"fileName": "_symbols.twig",
 		"fileDest": "templates/wrapper",
 		"json": "symbols.json",

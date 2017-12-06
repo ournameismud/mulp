@@ -26,7 +26,7 @@ module.exports = env => {
 		output: {
 			path: path.normalize(dest),
 			jsonpFunction: 'webpackJsonp',
-			publicPath: '/app/themes/wbsl/dist/js/',
+			publicPath: '/dist/js/',
 			pathinfo: env !== 'production' && true,
 			filename:
 				env === 'production'
@@ -56,8 +56,7 @@ module.exports = env => {
 										browsers: ['last 2 versions', 'safari >= 7']
 									}
 								}
-							],
-							'react'
+							]
 						],
 						plugins: [
 							'transform-object-rest-spread',
