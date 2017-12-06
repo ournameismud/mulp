@@ -1,9 +1,9 @@
-/* global  */
 const webpack = require('webpack')
 const path = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const querystring = require('querystring')
 const { removeEmpty } = require('webpack-config-utils')
+const { pathToUrl } = require('../utils/paths')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = env => {
@@ -20,19 +20,18 @@ module.exports = env => {
 	const { filename, entries, hot } = TASK_CONFIG.js
 
 	const config = {
+		name: 'bundle',
 		entry: entries,
 		cache: true,
 		context: context,
 		output: {
 			path: path.normalize(dest),
-			jsonpFunction: 'webpackJsonp',
-			publicPath: '/dist/js/',
-			pathinfo: env !== 'production' && true,
 			filename:
 				env === 'production'
-					? `[name].${filename}.${TASK_CONFIG.stamp}.js`
-					: `[name].${filename}.js`,
-			chunkFilename: '[name].[chunkhash].js'
+					? `${filename}.${TASK_CONFIG.stamp}.js`
+					: `${filename}.js`,
+			publicPath: pathToUrl(PATH_CONFIG.js.dest, '/'),
+			pathinfo: env !== 'production' && true
 		},
 		resolve: {
 			alias: {
@@ -60,8 +59,7 @@ module.exports = env => {
 						],
 						plugins: [
 							'transform-object-rest-spread',
-							'transform-class-properties',
-							'syntax-dynamic-import'
+							'transform-class-properties'
 						],
 						babelrc: false,
 						cacheDirectory: false
@@ -80,16 +78,6 @@ module.exports = env => {
 				'process.env': {
 					NODE_ENV: env === 'production' ? '"production"' : '"development"'
 				}
-			}),
-			new webpack.optimize.CommonsChunkPlugin({
-				name: 'common',
-				minChunks: function(module) {
-					return module.context && module.context.indexOf('node_modules') !== -1
-				}
-			}),
-			new webpack.optimize.CommonsChunkPlugin({
-				name: 'manifest',
-				minChunks: Infinity
 			})
 		])
 	}

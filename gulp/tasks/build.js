@@ -147,13 +147,19 @@ gulp.task('build:component-map', () => {
 	const logger = fractal.cli.console
 	return server.start().then(() => {
 		logger.success(
-			'Fractal server is alive, and building components and component-map.json'
+			'Fractal server is alive and well, components being built and json map being generated'
 		)
-		del([
-			path.resolve(process.env.PWD, 'deploy/__fractal__/**'),
-			`!${path.resolve(process.env.PWD, 'deploy/__fractal__')}`
-		]).then(() => {
+		del(
+			[
+				path.resolve(process.env.PWD, 'deploy/__fractal__/**'),
+				`!${path.resolve(process.env.PWD, 'deploy/__fractal__')}`
+			],
+			{
+				force: true
+			}
+		).then(() => {
 			exportPaths(fractal)
+				.catch(err => console.log(err))
 				.then(fractalTemplates)
 				.then(() => {
 					server.stop()
