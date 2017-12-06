@@ -13,9 +13,9 @@
 		"dest": "scss/_tokens"
 	},
 
-	"craftTemplates": {
+	"cms": {
 		"src": "templates",
-		"dest": "./deploy/fractal"
+		"dest": "./deploy/__fractal__"
 	},
 
 	"critical": {
