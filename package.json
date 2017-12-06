@@ -1,7 +1,7 @@
 {
 	"name": "mulp",
 	"description": "Gulp tasks and Fractal",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"main": "gulpfile.babel.js",
 	"author": "Dave Stockley",
 	"license": "MIT",
