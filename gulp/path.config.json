@@ -27,7 +27,7 @@
 	"cms": {
 		"src": "templates",
 		"dest": "./__fractal__",
-		"output": "/__fractal__"
+		"output": "__fractal__"
 	},
 
 	"critical": {

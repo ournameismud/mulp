@@ -64,9 +64,9 @@ function exportPaths(fractal) {
 
 			map[`@${handle}`] = {
 				src: path.resolve(process.env.PWD, item.viewPath),
-				dest: `${PATH_CONFIG.cms.dest}/${dest}`,
+				dest: `${PATH_CONFIG.cms.output}/${dest}`,
 				handle: handle,
-				output: `${PATH_CONFIG.cms.output}/${dest}/${handle}.twig`
+				file: `${handle}.twig`
 			}
 		}
 
