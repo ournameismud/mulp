@@ -13,7 +13,6 @@ gulp.task('fractalTemplates', fractalTemplates)
 
 function fractalTemplates(cb) {
 	const map = path.resolve(process.env.PWD, PATH_CONFIG.fractal.map)
-
 	const fracts = []
 
 	if (fs.existsSync(map)) {
@@ -65,9 +64,9 @@ function exportPaths(fractal) {
 
 			map[`@${handle}`] = {
 				src: path.resolve(process.env.PWD, item.viewPath),
-				dest: `${PATH_CONFIG.craftTemplates.dest}/${dest}`,
+				dest: `${PATH_CONFIG.cms.dest}/${dest}`,
 				handle: handle,
-				file: `${handle}.twig`
+				output: `${PATH_CONFIG.cms.output}/${dest}/${handle}.twig`
 			}
 		}
 
@@ -77,7 +76,7 @@ function exportPaths(fractal) {
 			'utf8',
 			err => {
 				if (err) {
-					reject(err)
+					reject('ERROR', err)
 					return
 				}
 				resolve(map)

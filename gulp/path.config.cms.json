@@ -1,16 +1,47 @@
 {
-	"public": "./deploy/public",
+	"public": "./deploy/web",
+	"dist": "app/themes/wbsl/dist/",
+
 	"browserSync": {
-		"proxy": "http://local.ournameismud.com"
+		"proxy": "http://local.wbsl.com"
+	},
+
+	"js": {
+		"dest": "app/themes/wbsl/dist/js"
+	},
+
+	"scss": {
+		"dest": "app/themes/wbsl/dist/css"
+	},
+
+	"cssFonts": {
+		"dest": "app/themes/wbsl/dist/css"
+	},
+
+	"images": {
+		"dest": "app/themes/wbsl/dist/images"
+	},
+
+	"fonts": {
+		"dest": "app/themes/wbsl/dist/fonts"
+	},
+
+	"sprites": {
+		"dest": "app/themes/wbsl/dist/images"
+	},
+
+	"svgs": {
+		"dest": "app/themes/wbsl/dist/images"
 	},
 
 	"symbols": {
-		"fileDest": "../deploy/craft/templates/includes"
+		"dest": "app/themes/wbsl/dist/images",
+		"fileDest": "../deploy/web/app/themes/wbsl/templates/includes"
 	},
 
 	"tags": {
-		"src": "./deploy/craft/templates/wrapper/_layout.twig",
-		"dest": "./deploy/craft/templates/wrapper/",
+		"src": "./deploy/web/app/themes/wbsl/templates/wrapper/_layout.twig",
+		"dest": "./deploy/web/app/themes/wbsl/templates/wrapper/",
 		"css": "/dist/css/",
 		"js": "/dist/js/"
 	},
@@ -22,7 +53,7 @@
 		"paths": [
 			{
 				"input": {
-					"url": "http://local.ournameismud.com/",
+					"url": "http://local.wbsl.com/",
 					"source": "home/home.twig"
 				},
 				"output": {

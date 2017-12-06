@@ -41,7 +41,7 @@ const { exportPaths } = require('./utils')
 		require('@frctl/mandelbrot')({
 			favicon: '/favicon.ico',
 			lang: 'en-gb',
-			styles: ['default', `/dist/css/theme${stamp}.css`],
+			styles: ['default', `/app/themes/wbsl/dist/css/theme${stamp}.css`],
 			static: {
 				mount: 'fractal'
 			}

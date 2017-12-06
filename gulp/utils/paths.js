@@ -1,6 +1,6 @@
 const path = require('path')
-const fs = require('fs')
-const deepmerge = require('deepmerge')
+// const fs = require('fs')
+// const deepmerge = require('deepmerge')
 
 module.exports = {
 	resolvePath,
@@ -47,44 +47,40 @@ function resolvePath() {
 }
 
 function getPathConfig() {
-	const customTaskConfig = path.resolve(
-		process.env.PWD,
-		'config/path.config.json'
-	)
+	// const customTaskConfig = path.resolve(
+	// 	process.env.PWD,
+	// 	'config/path.config.json'
+	// )
+	// const defaultTaskConfig = require('../path.config.json')
+	// if (fs.existsSync(customTaskConfig)) {
+	// 	return deepmerge(defaultTaskConfig, require(customTaskConfig))
+	// }
 
-	const defaultTaskConfig = require('../path.config.json')
-
-	if (fs.existsSync(customTaskConfig)) {
-		return deepmerge(defaultTaskConfig, require(customTaskConfig))
-	}
-
-	return defaultTaskConfig
+	return require('../path.config.json')
 }
 
 function getTaskConfig() {
-	const customPathConfig = path.resolve(
-		process.env.PWD,
-		'config/task.config.js'
-	)
+	// const customPathConfig = path.resolve(
+	// 	process.env.PWD,
+	// 	'config/task.config.js'
+	// )
+	// const defaultPathConfig = require('../task.config')
+	// if (fs.existsSync(customPathConfig)) {
+	// 	return { ...defaultPathConfig, ...require(customPathConfig) }
+	// }
 
-	const defaultPathConfig = require('../task.config')
-
-	if (fs.existsSync(customPathConfig)) {
-		return { ...defaultPathConfig, ...require(customPathConfig) }
-	}
-
-	return defaultPathConfig
+	return require('../task.config')
 }
 
 function getWebpackConfig(env) {
-	const customWebpack = path.resolve(
-		process.env.PWD,
-		'config/webpack.config.babel.js'
-	)
+	// const customWebpack = path.resolve(
+	// 	process.env.PWD,
+	// 	'config/webpack.config.babel.js'
+	// )
 
-	if (fs.existsSync(customWebpack)) {
-		return require(customWebpack)(env)
-	}
+	// if (fs.existsSync(customWebpack)) {
+	// 	return require(customWebpack)(env)
+	// }
 
 	return require('../tasks/webpack.config.babel.js')(env)
 }

@@ -8,9 +8,10 @@ const util = require('gulp-util')
 const path = require('path')
 const { getTasks } = require('../utils/tasks')
 const { buildFractal } = require('./fractal/build')
-const { fractalTemplates } = require('./fractal/utils')
+const { fractalTemplates, exportPaths } = require('./fractal/utils')
 const del = require('del')
 const { critialCss } = require('./critical')
+const { fractal } = require('./fractal')
 
 function build(cb) {
 	if (TASK_CONFIG.mode === 'fractal') {
@@ -140,6 +141,27 @@ function cleanFractal() {
 
 gulp.task('build', build)
 gulp.task('publish', publish)
+
+gulp.task('build:component-map', () => {
+	const server = fractal.web.server()
+	const logger = fractal.cli.console
+	return server.start().then(() => {
+		logger.success(
+			'Fractal server is alive, and building components and component-map.json'
+		)
+		del([
+			path.resolve(process.env.PWD, 'deploy/__fractal__/**'),
+			`!${path.resolve(process.env.PWD, 'deploy/__fractal__')}`
+		]).then(() => {
+			exportPaths(fractal)
+				.then(fractalTemplates)
+				.then(() => {
+					server.stop()
+					process.exit()
+				})
+		})
+	})
+})
 
 gulp.task('clean:dist', () => {
 	return del(

@@ -11,18 +11,39 @@ const path = require('path')
 module.exports = {
 	serviceWorker,
 	inlineScripts,
-	webpackProduction
+	webpackProduction,
+	moveScripts
 }
 
 gulp.task('serviceWorker', serviceWorker)
 gulp.task('inline-scripts', inlineScripts)
 gulp.task('bundle-script', webpackProduction)
 
+gulp.task('move-scripts', moveScripts)
+
 function webpackProduction(callback) {
 	webpack(global.WEBPACK_CONFIG, function(err, stats) {
 		logger(err, stats)
 		callback()
 	})
+}
+
+function moveScripts() {
+	const src = PATH_CONFIG.js.libs.map(lib => {
+		return path.resolve(process.env.PWD, lib)
+	})
+
+	const dest = path.resolve(
+		process.env.PWD,
+		PATH_CONFIG.public,
+		PATH_CONFIG.js.dest
+	)
+
+	return gulp
+		.src(src)
+		.pipe(uglify())
+		.pipe(gulp.dest(dest))
+		.pipe(browserSync.stream())
 }
 
 function inlineScripts() {
@@ -48,8 +69,8 @@ function serviceWorker() {
 					[
 						'inline-replace-variables',
 						{
-							__CSS__: `/dist/css/style${STAMP}.css`,
-							__JS__: `/dist/js/bundle${STAMP}.js`
+							__CSS__: `/app/themes/wbsl/dist/css/style${STAMP}.css`,
+							__JS__: `/app/themes/wbsl/dist/js/bundle${STAMP}.js`
 						}
 					]
 				]

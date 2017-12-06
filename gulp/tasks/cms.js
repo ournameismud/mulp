@@ -1,23 +1,21 @@
 const gulp = require('gulp')
-// const changed = require('gulp-changed')
-// const path = require('path')
 const browserSync = require('browser-sync')
 const { getPaths } = require('../utils/paths')
 const { fractalTemplates } = require('./fractal/utils')
 
 module.exports = {
-	craftTemplates
+	cms
 }
 
-gulp.task('craftTemplates', craftTemplates)
+gulp.task('cms', cms)
 
-function craftTemplates(cb) {
+function cms(cb) {
 	if (TASK_CONFIG.mode === 'fractal') {
 		return fractalTemplates().then(() => {
 			browserSync.reload()
 		})
 	} else {
-		const paths = getPaths('craftTemplates')
+		const paths = getPaths('cms')
 
 		return gulp.src(paths.src).pipe(browserSync.stream())
 	}

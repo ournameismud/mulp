@@ -23,6 +23,7 @@
 		"start": "gulp",
 		"cms": "gulp --config cms",
 		"build": "gulp build --env production --config cms",
+		"build:components": "gulp build:component-map",
 		"build:fractal": "gulp build -- --env production --config fractal",
 		"build:static": "gulp publish -- --env production --config fractal"
 	},

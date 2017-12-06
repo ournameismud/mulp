@@ -16,7 +16,7 @@ function watchTasks() {
 	const { watchList } = getWatch()
 
 	if (TASK_CONFIG.mode === 'fractal' && util.env.config === 'cms') {
-		watchList.push('craftTemplates')
+		watchList.push('cms')
 	}
 
 	watchList.forEach(taskName => {
@@ -45,13 +45,13 @@ function watchTasks() {
 			const files =
 				taskName === 'scss'
 					? [
-							path.resolve(process.env.PWD, PATH_CONFIG.src, taskPath.src),
-							path.resolve(
-								process.env.PWD,
-								PATH_CONFIG.src,
-								taskPath.components
-							)
-						]
+						path.resolve(process.env.PWD, PATH_CONFIG.src, taskPath.src),
+						path.resolve(
+							process.env.PWD,
+							PATH_CONFIG.src,
+							taskPath.components
+						)
+					]
 					: path.join(srcPath, globPattern)
 
 			watch(files, watchConfig, function() {

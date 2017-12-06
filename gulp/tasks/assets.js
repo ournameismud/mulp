@@ -9,7 +9,6 @@ module.exports = {
 	fonts,
 	cssFonts,
 	favicons,
-	moveScripts,
 	json,
 	staticAssets
 }
@@ -17,7 +16,6 @@ module.exports = {
 gulp.task('fonts', fonts)
 gulp.task('cssFonts', cssFonts)
 gulp.task('favicons', favicons)
-gulp.task('move-scripts', moveScripts)
 gulp.task('json', json)
 gulp.task('staticAssets', staticAssets)
 
@@ -38,23 +36,6 @@ function favicons() {
 		.src(paths.src)
 		.pipe(changed(paths.dest)) // Ignore unchanged files
 		.pipe(gulp.dest(paths.dest))
-		.pipe(browserSync.stream())
-}
-
-function moveScripts() {
-	const src = PATH_CONFIG.js.libs.map(lib => {
-		return path.resolve(process.env.PWD, lib)
-	})
-
-	const dest = path.resolve(
-		process.env.PWD,
-		PATH_CONFIG.public,
-		PATH_CONFIG.js.dest
-	)
-
-	return gulp
-		.src(src)
-		.pipe(gulp.dest(dest))
 		.pipe(browserSync.stream())
 }
 
@@ -94,11 +75,24 @@ function cssFonts() {
 }
 
 function staticAssets() {
-	const paths = getPaths('static')
+	// const paths = getPaths('staticAssets')
+
+	const src = path.resolve(
+		process.env.PWD,
+		PATH_CONFIG.src,
+		PATH_CONFIG.staticAssets.src,
+		'*.*'
+	)
+
+	const dest = path.resolve(
+		process.env.PWD,
+		PATH_CONFIG.public,
+		PATH_CONFIG.staticAssets.dest
+	)
 
 	return gulp
-		.src(paths.src)
-		.pipe(changed(paths.dest)) // Ignore unchanged files
-		.pipe(gulp.dest(paths.dest))
+		.src(src)
+		.pipe(changed(dest)) // Ignore unchanged files
+		.pipe(gulp.dest(dest))
 		.pipe(browserSync.stream())
 }

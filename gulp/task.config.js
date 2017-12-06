@@ -3,6 +3,49 @@ const $pkg = require(path.resolve(process.env.PWD, 'package.json'))
 
 module.exports = {
 	title: $pkg.name,
+	mode: 'fractal',
+
+	cms: {
+		watch: true,
+		task: 'asset',
+		extensions: ['twig']
+	},
+
+	critical: false,
+
+	fractal: {
+		layout: 'wrapper/_layout.twig',
+		context: {
+			siteTitle: 'Mudstone Component Library'
+		},
+		statuses: {
+			tool: {
+				label: 'Prototype',
+				description: 'Do not implement.',
+				color: '#FF3333'
+			},
+			wip: {
+				label: 'WIP',
+				description: 'Work in progress. Implement with caution.',
+				color: '#FF9233'
+			},
+			ready: {
+				label: 'Ready',
+				description: 'Ready to implement. Snapshot saved',
+				color: '#4ae4ae'
+			},
+			test: {
+				label: 'Test',
+				description: 'Regression test',
+				color: '#44aaee'
+			},
+			production: {
+				label: 'Production',
+				description: 'Component in production, regression tests approved',
+				color: '#29CC29'
+			}
+		}
+	},
 
 	stamp: Date.now(),
 
@@ -19,7 +62,8 @@ module.exports = {
 
 	js: {
 		entries: {
-			app: ['babel-polyfill', './app.js']
+			common: ['react', 'react-dom', 'axios'],
+			app: ['./app.js']
 		},
 		hot: {
 			enabled: true,
@@ -75,8 +119,8 @@ module.exports = {
 	},
 
 	staticAssets: {
-		task: null,
-		watch: false,
+		task: 'asset',
+		watch: true,
 		extensions: ['*']
 	},
 
@@ -145,13 +189,6 @@ module.exports = {
 		}
 	},
 
-	critical: {
-		inline: false,
-		width: 1300,
-		minify: true,
-		height: 900
-	},
-
 	backstop: {
 		url: 'http://localhost:3000/components/preview/',
 		defaults: {
@@ -166,7 +203,7 @@ module.exports = {
 		},
 		config: {
 			id: 'backstop_prod_test',
-			viewports: [
+			vieoutputorts: [
 				{
 					name: 'phone',
 					width: 320,
