@@ -3,19 +3,26 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### 1.0.0
+
+#### Change
+
+* Everythings gone... This is now just the dependencies
+* See https://github.com/ournameismud/mud-fractal for tasks and boilerplate code
+
 ### 0.1.0
 
 #### Added
 
-- Integration with craftcms
-- Two modes, fractal or html (i.e. old school twig templates)
-- Generate static builds from fractal library
-- Critical css all the things
-- Simplified Configs
-- Scaffold src structure
-- Overwrite the webpack config with your own (config/webpack.config.babel.js)
+* Integration with craftcms
+* Two modes, fractal or html (i.e. old school twig templates)
+* Generate static builds from fractal library
+* Critical css all the things
+* Simplified Configs
+* Scaffold src structure
+* Overwrite the webpack config with your own (config/webpack.config.babel.js)
 
 ### 0.0.1
 
-- Fractal/Craft integration (wip)
-- Initial commit 0.0.0
+* Fractal/Craft integration (wip)
+* Initial commit 0.0.0
