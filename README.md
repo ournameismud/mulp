@@ -10,8 +10,6 @@ Package contains all of the dependencies required by [mud-fractal](https://githu
 
 * node >= 8.6.0
 * gulp >= 3.91
-* yarn/npm
-* webpack >= 3.0.0
 
 ###### Installation
 
