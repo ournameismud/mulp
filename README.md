@@ -4,7 +4,7 @@
 
 > Frontend starter kit integrated with [Fractal](http://fractal.build/), inspired by [Blendid](https://github.com/vigetlabs/blendid)
 
-Package contains all of the dependencies required by [mud-fractal]https://github.com/ournameismud/mud-fractal
+Package contains all of the dependencies required by [mud-fractal](https://github.com/ournameismud/mud-fractal)
 
 ###### Requirements
 
@@ -19,4 +19,4 @@ Package contains all of the dependencies required by [mud-fractal]https://github
 
 ###### Gettings Start
 
-Gulp tasks and boilerplate colde can be [here]https://github.com/ournameismud/mud-fractal
+Gulp tasks and boilerplate colde can be [here](https://github.com/ournameismud/mud-fractal)
