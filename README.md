@@ -17,4 +17,4 @@ Package contains all of the dependencies required by [mud-fractal](https://githu
 
 ###### Gettings Start
 
-Gulp tasks and boilerplate colde can be [here](https://github.com/ournameismud/mud-fractal)
+Gulp tasks and boilerplate code can be [here](https://github.com/ournameismud/mud-fractal)
