@@ -1,7 +1,7 @@
 {
 	"name": "mulp",
 	"description": "Gulp tasks and Fractal",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "gulpfile.babel.js",
 	"author": "Dave Stockley",
 	"license": "MIT",
@@ -104,8 +104,8 @@
 		"postcss-write-svg": "^3.0.1",
 		"prettier": "^1.6.1",
 		"progress-bar-webpack-plugin": "^1.10.0",
-		"purgecss-from-js": "^0.1.0",
 		"purge-from-html": "^1.0.3",
+		"purgecss-from-js": "^0.1.0",
 		"querystring": "^0.2.0",
 		"require-dir": "^0.3.2",
 		"require-glob": "^3.2.0",
@@ -124,5 +124,8 @@
 		"webpack-config-utils": "^2.3.0",
 		"webpack-dev-middleware": "^1.11.0",
 		"webpack-hot-middleware": "^2.20.0"
+	},
+	"devDependencies": {
+		"modularscale-js": "^3.0.1"
 	}
 }
