@@ -3,6 +3,20 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### 1.0.1
+
+added:
+
+### 1.0.1
+
+    	"modularscale-js": "^3.0.1",
+
+added:
+
+    	"postcss-easing-gradients": "^1.2.3",
+    	"purgecss-from-js": "^0.1.0",
+    	"webpack-bundle-analyzer": "^2.10.0"
+
 ### 1.0.0
 
 #### Change
