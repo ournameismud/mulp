@@ -1,15 +1,12 @@
 {
 	"name": "mulp",
 	"description": "Gulp tasks and Fractal",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"main": "gulpfile.babel.js",
 	"author": "Dave Stockley",
 	"license": "MIT",
 	"engines": {
 		"node": ">=8.6.0"
-	},
-	"bin": {
-		"mulp": "bin/mulp.js"
 	},
 	"bugs": {
 		"url": "https://github.com/ournameismud/mulp/issues"
@@ -30,7 +27,9 @@
 		"babel-core": "^6.25.0",
 		"babel-eslint": "^8.0.1",
 		"babel-loader": "^7.1.1",
+		"babel-plugin-dynamic-import-node": "^1.2.0",
 		"babel-plugin-inline-replace-variables": "^1.3.1",
+		"babel-plugin-module-resolver": "^3.1.0",
 		"babel-plugin-syntax-dynamic-import": "^6.18.0",
 		"babel-plugin-transform-class-properties": "^6.24.1",
 		"babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -84,6 +83,7 @@
 		"gulp-util": "^3.0.8",
 		"gulp-watch": "^4.3.5",
 		"jest": "^21.2.1",
+		"jsdom-quokka-plugin": "^1.0.11",
 		"json-sass": "^1.3.5",
 		"markdown-it": "^8.3.2",
 		"markdown-it-abbr": "^1.0.4",
