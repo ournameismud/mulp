@@ -1,12 +1,12 @@
 {
 	"name": "mulp",
 	"description": "Gulp tasks and Fractal",
-	"version": "2.2.2",
+	"version": "3.0.0",
 	"main": "gulpfile.babel.js",
 	"author": "Dave Stockley",
 	"license": "MIT",
 	"engines": {
-		"node": ">=8.6.0"
+		"node": ">=9.10.0"
 	},
 	"bugs": {
 		"url": "https://github.com/ournameismud/mulp/issues"
@@ -49,7 +49,7 @@
 		"del": "^3.0.0",
 		"devcert-with-localhost": "^0.3.3",
 		"docdash": "^0.4.0",
-		"eslint": "^4.9.0",
+		"eslint": "5.1.0",
 		"eslint-config-airbnb": "^16.1.0",
 		"eslint-config-prettier": "^2.4.0",
 		"eslint-loader": "^2.0.0",
